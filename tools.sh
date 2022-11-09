@@ -1,0 +1,124 @@
+#! /bin/bash
+date_today=$(date)
+echo "Hello Amr"
+echo "Today is: $date_today"
+
+mkdir "Fedora Tools"
+cd "Fedora Tools"
+
+# ---------------------------- Explotation Tools --------------------------------
+echo "Creating a directory for explotation tools..."
+mkdir Exploitation
+cd Exploitation
+
+# Installing Metasploit
+echo "Installing Metasploit Framework..."
+sudo snap install metasploit-framework --beta
+echo "Metasploit Framework added..."
+
+cd ../
+
+# ---------------------------- OSINT Tools --------------------------------
+echo "Creating  a directory for OSINT tools..."
+mkdir OSINT
+cd OSINT
+
+# Installing Sherlock
+echo "Installing Sherlock..."
+git clone https://github.com/sherlock-project/sherlock.git
+cd sherlock
+python3 -m pip install -r requirements.txt
+cd ../
+echo "Sherlock added..."
+
+# Installing Instragram OSINT
+echo "Installing OSINTgram..."
+git clone https://github.com/Datalux/Osintgram.git
+cd Osintgram
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+echo "OSINTgram added..."
+cd ../
+
+# Installing Phoneinfoga
+echo "Installing Phoneinfoga..."
+git clone https://github.com/sundowndev/PhoneInfoga
+cd PhoneInfoga/
+python3 -m pip install -r requirements.txt --user
+cp config.example.py config.py 
+python3 phoneinfoga.py -v
+echo "Phoneinfoga added..."
+cd ../
+
+cd ../
+
+# ---------------------------- Networking Tools --------------------------
+echo "Creating a directory for networking tools..."
+mkdir Networking
+cd Networking
+
+# Installing WireShark
+sudo dnf install wireshark-qt
+echo "WireShark added..."
+
+# Installing Evillimitter	
+echo "Installing Evillimiter..."
+cd
+git clone https://github.com/bitbrute/evillimiter.git
+cd evillimiter
+sudo python3 setup.py install
+echo "Evillimmiter added..."
+cd ../
+
+
+cd ../
+
+# ---------------------------- Password Cracking Tools --------------------------
+echo "Creating a directory for password cracking..."
+mkdir Password-Cracking
+cd Password-Cracking
+# Installing Hydra
+echo "Installing Hydra..."
+sudo dnf -y install hydra
+echo "Hydra added..."
+
+# Installing HashCat
+echo "Installing Hashcat..."
+sudo dnf install hashcat
+echo "Hashcat added..."
+
+cd ../
+# ---------------------------- Web-App Pentesting Tools --------------------------
+echo "Creating a directory for web pentesing..."
+mkdir "Web-App Pentesting"
+cd "Web-App Pentesting"
+
+# Installing ffuf
+echo "Installing FFuf..."
+git clone https://github.com/ffuf/ffuf ; 
+cd ffuf 
+go get 
+go build
+cd ../
+
+# Installing WhatWeb
+echo "Installing WhatWeb..."
+git clone https://github.com/urbanadventurer/WhatWeb.git
+
+# Installing Seclists
+echo "Installing SecLists..."
+git clone https://github.com/danielmiessler/SecLists.git
+
+# Installing HackCrawler
+echo "Installing HackCrawler..."
+go install github.com/hakluke/hakrawler@latest
+
+# ----------------------------  Scripts --------------------------
+echo "Creating a directory for scripts..."
+mkdir "Scripts"
+cd "Scripts"
+
+
+
+
