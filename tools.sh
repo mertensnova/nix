@@ -2,14 +2,13 @@
 date_today=$(date)
 echo "Today is: $date_today"
 
-
 cd
-mkdir "Hacking Tools"
+sudo mkdir "Hacking Tools"
 cd "Hacking Tools"
 
 # ---------------------------- Explotation Tools --------------------------------
 echo "Creating a directory for explotation tools..."
-mkdir Exploitation
+sudo mkdir Exploitation
 cd Exploitation
 
 # Installing Metasploit
@@ -21,7 +20,7 @@ cd ../
 
 # ---------------------------- OSINT Tools --------------------------------
 echo "Creating  a directory for OSINT tools..."
-mkdir OSINT
+sudo mkdir OSINT
 cd OSINT
 
 # Installing Sherlock
@@ -56,7 +55,7 @@ cd ../
 
 # ---------------------------- Networking Tools --------------------------
 echo "Creating a directory for networking tools..."
-mkdir Networking
+sudo mkdir Networking
 cd Networking
 
 # Installing WireShark
@@ -82,7 +81,7 @@ cd ../
 
 # ---------------------------- Password Cracking Tools --------------------------
 echo "Creating a directory for password cracking..."
-mkdir Password-Cracking
+sudo mkdir Password-Cracking
 cd Password-Cracking
 # Installing Hydra
 echo "Installing Hydra..."
@@ -94,10 +93,13 @@ echo "Installing Hashcat..."
 sudo dnf install hashcat
 echo "Hashcat added..."
 
+echo "Installing Hash Identifier"
+sudo snap install hash-id
+
 cd ../
 # ---------------------------- Web-App Pentesting Tools --------------------------
 echo "Creating a directory for web pentesing..."
-mkdir "Web-App Pentesting"
+sudo mkdir "Web-App Pentesting"
 cd "Web-App Pentesting"
 
 # Installing ffuf
@@ -120,11 +122,12 @@ git clone https://github.com/danielmiessler/SecLists.git
 echo "Installing HackCrawler..."
 go install github.com/hakluke/hakrawler@latest
 
+echo "Installing Medusa..."
+git clone https://src.fedoraproject.org/rpms/medusa.git
+
+cd ../
+
 # ----------------------------  Scripts --------------------------
 echo "Creating a directory for scripts..."
-mkdir "Scripts"
+sudo mkdir "Scripts"
 cd "Scripts"
-
-
-
-

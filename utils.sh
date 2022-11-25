@@ -1,6 +1,5 @@
 #! /bin/bash
 date_today=$(date)
-echo "Hello Amr"
 echo "Today is: $date_today"
 
 # Installing Git
