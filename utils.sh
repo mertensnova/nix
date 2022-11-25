@@ -57,3 +57,7 @@ mkdir -p $HOME/go
 echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 source $HOME/.bashrc
 go env GOPATH
+
+# Installing Cherrytree
+echo "Installing Cherrytree..."
+sudo snap install cherrytree

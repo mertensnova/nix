@@ -1,10 +1,11 @@
 #! /bin/bash
 date_today=$(date)
-echo "Hello Amr"
 echo "Today is: $date_today"
 
-mkdir "Fedora Tools"
-cd "Fedora Tools"
+
+cd
+mkdir "Hacking Tools"
+cd "Hacking Tools"
 
 # ---------------------------- Explotation Tools --------------------------------
 echo "Creating a directory for explotation tools..."
@@ -59,6 +60,7 @@ mkdir Networking
 cd Networking
 
 # Installing WireShark
+echo "Installing WireShark..."
 sudo dnf install wireshark-qt
 echo "WireShark added..."
 
@@ -71,6 +73,10 @@ sudo python3 setup.py install
 echo "Evillimmiter added..."
 cd ../
 
+# Installing Responder
+echo "Installing Responder..."
+git clone https://gitlab.com/kalilinux/packages/responder.git
+echo "Responder added..."
 
 cd ../
 
