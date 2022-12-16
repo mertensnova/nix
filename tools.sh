@@ -3,24 +3,23 @@ date_today=$(date)
 echo "Today is: $date_today"
 
 cd
-sudo mkdir "Hacking Tools"
-cd "Hacking Tools"
+mkdir "Hacking-Tools"
+cd "Hacking-Tools"
 
 # ---------------------------- Explotation Tools --------------------------------
 echo "Creating a directory for explotation tools..."
-sudo mkdir Exploitation
+mkdir Exploitation
 cd Exploitation
 
 # Installing Metasploit
 echo "Installing Metasploit Framework..."
-sudo snap install metasploit-framework --beta
+snap install metasploit-framework --beta
 echo "Metasploit Framework added..."
-
 cd ../
 
 # ---------------------------- OSINT Tools --------------------------------
 echo "Creating  a directory for OSINT tools..."
-sudo mkdir OSINT
+mkdir OSINT
 cd OSINT
 
 # Installing Sherlock
@@ -37,6 +36,7 @@ git clone https://github.com/Datalux/Osintgram.git
 cd Osintgram
 python3 -m venv venv
 source venv/bin/activate
+deactivate
 pip3 install -r requirements.txt
 echo "OSINTgram added..."
 cd ../
@@ -45,7 +45,7 @@ cd ../
 echo "Installing Phoneinfoga..."
 git clone https://github.com/sundowndev/PhoneInfoga
 cd PhoneInfoga/
-python3 -m pip install -r requirements.txt --user
+pip3 install -r requirements.txt --user
 cp config.example.py config.py 
 python3 phoneinfoga.py -v
 echo "Phoneinfoga added..."
@@ -60,17 +60,8 @@ cd Networking
 
 # Installing WireShark
 echo "Installing WireShark..."
-sudo dnf install wireshark-qt
+sudo dnf install wireshark
 echo "WireShark added..."
-
-# Installing Evillimitter	
-echo "Installing Evillimiter..."
-cd
-git clone https://github.com/bitbrute/evillimiter.git
-cd evillimiter
-sudo python3 setup.py install
-echo "Evillimmiter added..."
-cd ../
 
 # Installing Responder
 echo "Installing Responder..."
@@ -80,9 +71,6 @@ echo "Responder added..."
 cd ../
 
 # ---------------------------- Password Cracking Tools --------------------------
-echo "Creating a directory for password cracking..."
-sudo mkdir Password-Cracking
-cd Password-Cracking
 # Installing Hydra
 echo "Installing Hydra..."
 sudo dnf -y install hydra
@@ -90,16 +78,17 @@ echo "Hydra added..."
 
 # Installing HashCat
 echo "Installing Hashcat..."
-sudo dnf install hashcat
+sudo dnf -y install hashcat
 echo "Hashcat added..."
 
-echo "Installing Hash Identifier"
-sudo snap install hash-id
+echo "Installing John Ripper..."
+snap install john-the-ripper
+echo "John Ripper..."
 
 cd ../
 # ---------------------------- Web-App Pentesting Tools --------------------------
 echo "Creating a directory for web pentesing..."
-sudo mkdir "Web-App Pentesting"
+mkdir "Web-App Pentesting"
 cd "Web-App Pentesting"
 
 # Installing ffuf
@@ -124,6 +113,10 @@ go install github.com/hakluke/hakrawler@latest
 
 echo "Installing Medusa..."
 git clone https://src.fedoraproject.org/rpms/medusa.git
+
+#Installing Httprobe
+echo "Installing HTTProbe..."
+sudo dnf install httprobe
 
 cd ../
 

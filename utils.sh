@@ -2,27 +2,12 @@
 date_today=$(date)
 echo "Today is: $date_today"
 
-# Installing Git
-echo "Installing Git..."
-sudo dnf -y install git
-echo "Git added ..."
 
-# Installing Snap
-echo "Installing Snap"
-sudo dnf install snapd
-sudo ln -s /var/lib/snapd/snap /snap
-echo "Snap has been installed"
-
+echo "Installing all common tools"
+sudo dnf -y group install "Development Tools"
 # Installing Nginx
 echo "Installing Nginx..."
 sudo dnf install nginx
-
-# Installing Apache
-echo "Installing Apache..."
-sudo dnf install httpd -y
-
-# Installing Stacer
-sudo dnf install stacer
 
 # Installing Docker
 echo "Installing Docker..."
@@ -57,6 +42,3 @@ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 source $HOME/.bashrc
 go env GOPATH
 
-# Installing Cherrytree
-echo "Installing Cherrytree..."
-sudo snap install cherrytree
