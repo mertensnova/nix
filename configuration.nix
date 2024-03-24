@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports =
     [ 
@@ -70,7 +69,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-xfce.thunar
+      xfce.thunar
+      cmatrix
+      cava
+      pavucontrol
     ];
   };
 
@@ -93,14 +95,13 @@ xfce.thunar
     networkmanager
     lightdm
     unzip
-    libgcc
     go
     hyprshot
-    nodejs_21
-wireguard-tools
+    wireguard-tools
     wayland
-waybar
-hyprlock
+    hyprlock
+    brightnessctl
+    waybar
 ];
 
 networking.networkmanager.enable = true;
