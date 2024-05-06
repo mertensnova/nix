@@ -2,6 +2,7 @@
 {
   imports =
     [ 
+      ./options/fonts.nix
       ./hardware-configuration.nix
     ];
 
@@ -18,7 +19,7 @@
 
 
  networking.hostName = "nixos"; 
- nix.settings.experimental-features = ["nix-command""flakes"];
+ nix.settings.experimental-features = ["nix-command" "flakes"];
  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -35,7 +36,6 @@
 
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = false;
   services.xserver.desktopManager.gnome.enable = false;
   services.xserver.displayManager.lightdm.enable = true;
@@ -43,65 +43,64 @@
   xdg.portal.enable =true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   
-  # Enable CUPS to print documents.
   services.printing.enable = false;
 
-  # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  services.pipewire = {
+  services.pipewire= {
     enable = false;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
 
-  users.users.nyx = {
+  users.users.mertens = {
     isNormalUser = true;
-    description = "nyx";
+    description = "mertens";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+     vscodium
       xfce.thunar
       cmatrix
       cava
       pavucontrol
+      vlc
+     zoom-us
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    vim 
+    tree 
+    file
+    ffmpeg   
+    vim
+    pulseaudio
     wget
     neovim
     tmux
     kitty
-    neofetch
     git
     hyprland
     hyprpaper 
     wofi
     ncdu
-    ly
-    htop
+    btop
     networkmanager
     lightdm
     unzip
-    go
     hyprshot
     wireguard-tools
     wayland
     hyprlock
     brightnessctl
     waybar
+    fastfetch
 ];
 
 networking.networkmanager.enable = true;
@@ -117,13 +116,6 @@ hardware = {
 opengl.enable = true;
 };
 
-  
   services.openssh.enable = true;
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   system.stateVersion = "23.11"; # Did you read the comment?
 }

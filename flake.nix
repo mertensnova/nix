@@ -2,13 +2,15 @@
   description = "Nyx using NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
- waybar.url = "github:Alexays/Waybar";
-  hyprlock = {
+
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    waybar.url = "github:Alexays/Waybar";
+    hyprlock = {
             url = "github:hyprwm/hyprlock";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
+   
   };
 
   outputs = { self, nixpkgs,... }@inputs: {
