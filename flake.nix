@@ -5,13 +5,18 @@
 
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    waybar.url = "github:Alexays/Waybar";
+        waybar.url = "github:Alexays/Waybar";
     hyprlock = {
             url = "github:hyprwm/hyprlock";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-   
-  };
+
+     home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+ };
+
 
   outputs = { self, nixpkgs,... }@inputs: {
 
@@ -20,8 +25,8 @@
    specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
-        # inputs.home-manager.nixosModules.default
       ];
     };
   };
 }
+

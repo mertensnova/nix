@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs,config, pkgs, ... }:
 {
-  imports =
+ imports =
     [ 
       ./options/fonts.nix
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -16,6 +17,14 @@
       useOSProber = true;
     };
   };
+
+# Home
+home-manager = {
+	extraSpecialArgs = {inherit inputs;};
+	users = {
+	    mertens = import ./home.nix;
+	};
+};
 
 
  networking.hostName = "nixos"; 
@@ -63,19 +72,20 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-     vscodium
+      vscodium
       xfce.thunar
       cmatrix
       cava
       pavucontrol
       vlc
-     zoom-us
+      zoom-us
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    home-manager
     tree 
     file
     ffmpeg   
@@ -101,6 +111,7 @@
     brightnessctl
     waybar
     fastfetch
+    zathura
 ];
 
 networking.networkmanager.enable = true;
@@ -115,7 +126,6 @@ environment.sessionVariables = {
 hardware = {
 opengl.enable = true;
 };
-
   services.openssh.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 }
