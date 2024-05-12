@@ -10,48 +10,105 @@
 programs.neovim = 
 let 
 lua = str: "lua << EOF\n${str}\nEOF\n";
+luafile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
 in
 {
 
    enable = true;
 	extraPackages = with pkgs;[
-
-
-go
-clang
-gopls
+         go
+         clang
+         gopls
+python3
 ];
+
+extraConfig = ''
+set relativenumber
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nowrap
+set noswapfile
+set nobackup
+let &undodir = expand('$HOME') . '/.vim/undodir'
+set undofile
+set nohlsearch
+set incsearch
+set termguicolors
+set scrolloff=10
+set signcolumn=yes
+set updatetime=50
+set colorcolumn=80
+let mapleader = " "
+set background=dark
+let g:airline_theme = 'one'
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+ '';
    viAlias = true;
    vimAlias = true;
    vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+       {
+         plugin = tokyonight-nvim;
+         config = luafile ./plugins/color.lua;
+       }
+  {
+         plugin = undotree;
+         config = luafile ./plugins/undotree.lua;
+       }
+ {
+         plugin = nvim-lspconfig;
+         config = luafile ./plugins/lsp.lua;
+       }
 
-       nvim-lspconfig
+ {
+         plugin = mason-lspconfig-nvim;
+         config = luafile ./plugins/lsp.lua;
+       }
 
-undotree-nvim
-lsp-zero-nvim
+ {
+         plugin = vim-fugitive;
+         config = luafile ./plugins/fugative.lua;
+       }
 
-mason-nvim
-fugitive-nvim
-      nvim-cmp 
+ {
+         plugin = luasnip;
+         config = luafile ./plugins/ncmp.lua;
+       }
 
- vim-tmux-navigator     
+ {
+         plugin = harpoon;
+         config = luafile ./plugins/harpoon.lua;
+       }
 
-         telescope-nvim
-trouble-nvim
+ {
+         plugin = trouble-nvim;
+         config = luafile ./plugins/trouble.lua;
+       }
+
+ {
+         plugin = telescope-nvim;
+         config = luafile ./plugins/telescope.lua;
+       }
+
+ {
+         plugin = lualine-nvim;
+         config = luafile ./plugins/lualine.lua;
+       }
+ {
+         plugin = refactoring-nvim;
+         config = luafile ./plugins/refactor.lua;
+       }
 
 
-      cmp_luasnip
-      cmp-nvim-lsp
 
-      luasnip
-      friendly-snippets
-
-
-      lualine-nvim
-      nvim-web-devicons
-
+       vim-tmux-navigator     
+       friendly-snippets
+       nvim-web-devicons
       {
         plugin = (nvim-treesitter.withPlugins (p: [
           p.tree-sitter-nix
@@ -68,78 +125,21 @@ trouble-nvim
 
       vim-nix
 
-      # {
-      #   plugin = vimPlugins.own-onedark-nvim;
-      #   config = "colorscheme onedark";
-      # }
     ];
 
 };
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+   
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/mertens/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
      EDITOR = "nvim";
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
