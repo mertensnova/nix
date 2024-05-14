@@ -1,56 +1,29 @@
-{ config, pkgs, ... }:
-
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "mertens";
-  home.homeDirectory = "/home/mertens";
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
 
+options.myopt = {
+    nvim-config.enable = lib.mkEnableOption "nvim-config";
+  };
+ 
+  config = lib.mkIf config.myopt.nvim-config.enable {
+      home-manager.users.${config.myopt.username} = {
+      programs.neovim =
+	let 
+	lua = str: "lua << EOF\n${str}\nEOF\n";
+	luafile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+	in{
+        enable = true;
 
-programs.neovim = 
-let 
-lua = str: "lua << EOF\n${str}\nEOF\n";
-luafile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-in
-{
+ 	viAlias = true;
+         vimAlias = true;
+         vimdiffAlias = true;
 
-   enable = true;
-	extraPackages = with pkgs;[
-         go
-         clang
-         gopls
-python3
-];
-
-extraConfig = ''
-set relativenumber
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set nowrap
-set noswapfile
-set nobackup
-let &undodir = expand('$HOME') . '/.vim/undodir'
-set undofile
-set nohlsearch
-set incsearch
-set termguicolors
-set scrolloff=10
-set signcolumn=yes
-set updatetime=50
-set colorcolumn=80
-let mapleader = " "
-set background=dark
-let g:airline_theme = 'one'
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
- '';
-   viAlias = true;
-   vimAlias = true;
-   vimdiffAlias = true;
-
+	extraPackages = with pkgs;[go clang gopls python3];
+	extraConfig = luafile ./plugins/set.lua;
     plugins = with pkgs.vimPlugins; [
        {
          plugin = tokyonight-nvim;
@@ -81,6 +54,11 @@ set termguicolors
        }
 
  {
+         plugin = nvim-cmp;
+         config = luafile ./plugins/ncmp.lua;
+       }
+
+ {
          plugin = harpoon;
          config = luafile ./plugins/harpoon.lua;
        }
@@ -103,9 +81,11 @@ set termguicolors
          plugin = refactoring-nvim;
          config = luafile ./plugins/refactor.lua;
        }
-
-
-
+	cmp-buffer
+	cmp-path
+	cmp_luasnip
+	cmp-nvim-lsp
+	cmp-nvim-lua
        vim-tmux-navigator     
        friendly-snippets
        nvim-web-devicons
@@ -126,20 +106,8 @@ set termguicolors
       vim-nix
 
     ];
-
-};
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
-  home.packages = [
-  ];
-
-  home.file = {
-   
+      };
+    };
   };
-
-  home.sessionVariables = {
-     EDITOR = "nvim";
-  };
-
-  programs.home-manager.enable = true;
 }
+

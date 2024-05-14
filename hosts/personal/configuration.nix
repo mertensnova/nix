@@ -2,7 +2,7 @@
 {
  imports =
     [ 
-      ./options/fonts.nix
+       ../../options/fonts.nix
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -18,16 +18,16 @@
     };
   };
 
-# Home
-home-manager = {
-	extraSpecialArgs = {inherit inputs;};
-	users = {
-	    mertens = import ./home.nix;
-	};
-};
+
+  myopt.hostname = "nixos";
+  myopt.username = "mertens";
+  myopt = {
+ nvim-config.enable = true;
+    home-manager.enable = true;
+  };
 
 
- networking.hostName = "nixos"; 
+ #networking.hostName = "nixos"; 
  nix.settings.experimental-features = ["nix-command" "flakes"];
  i18n.defaultLocale = "en_US.UTF-8";
 
