@@ -1,7 +1,4 @@
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-
-luasnip.config.setup {}
+local cmp = require("cmp")
 
 cmp.setup {
   snippet = {
@@ -37,8 +34,11 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+
+    { name = 'cmp' },
+    { name = 'nvim-cmp' },
+    { name = 'cmp_buffer' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
 }
-

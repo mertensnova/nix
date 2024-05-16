@@ -5,7 +5,6 @@
   outputs = { self, nixpkgs,... }@inputs: {
 
     nixosConfigurations = import ./hosts {inherit nixpkgs inputs self;};
- 
   };
   inputs = {
 

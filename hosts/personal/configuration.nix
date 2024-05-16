@@ -18,7 +18,6 @@
     };
   };
 
-
   myopt.hostname = "nixos";
   myopt.username = "mertens";
   myopt = {
@@ -71,6 +70,8 @@
     description = "mertens";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      alejandra
+      telegram-desktop
       firefox
       vscodium
       xfce.thunar
