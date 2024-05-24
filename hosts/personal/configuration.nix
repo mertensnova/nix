@@ -70,16 +70,18 @@
     description = "mertens";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      alejandra
       telegram-desktop
+      zathura
       firefox
-      vscodium
       xfce.thunar
+      zed-editor
+      obsidian
       cmatrix
       cava
       pavucontrol
       vlc
       zoom-us
+      discord
     ];
   };
 
@@ -88,6 +90,7 @@
   environment.systemPackages = with pkgs; [
     home-manager
     tree 
+    feh
     file
     ffmpeg   
     vim
@@ -112,7 +115,6 @@
     brightnessctl
     waybar
     fastfetch
-    zathura
 ];
 
 networking.networkmanager.enable = true;

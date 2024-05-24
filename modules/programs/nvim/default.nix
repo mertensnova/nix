@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   options.myopt = {
     nvim-config.enable = lib.mkEnableOption "nvim-config";
   };
@@ -19,84 +18,23 @@
         in
         {
           enable = true;
-
           viAlias = true;
           vimAlias = true;
           vimdiffAlias = true;
 
           extraPackages = with pkgs; [
             go
+            lua-language-server
             clang
+            clang-tools
             gopls
             python3
+            fd
+            unzip
+            ripgrep
           ];
-          extraConfig = "luafile ${./plugins/set.lua}";
+
           plugins = with pkgs.vimPlugins; [
-            {
-              plugin = tokyonight-nvim;
-              config = luafile ./plugins/color.lua;
-            }
-            {
-              plugin = undotree;
-              config = luafile ./plugins/undotree.lua;
-            }
-            {
-              plugin = nvim-lspconfig;
-              config = luafile ./plugins/lsp.lua;
-            }
-
-            {
-              plugin = mason-lspconfig-nvim;
-              config = luafile ./plugins/lsp.lua;
-            }
-
-            {
-              plugin = vim-fugitive;
-              config = luafile ./plugins/fugative.lua;
-            }
-
-            {
-              plugin = luasnip;
-              config = luafile ./plugins/ncmp.lua;
-            }
-
-            {
-              plugin = nvim-cmp;
-              config = "luafile ${./plugins/ncmp.lua}";
-            }
-
-            {
-              plugin = harpoon;
-              config = luafile ./plugins/harpoon.lua;
-            }
-
-            {
-              plugin = trouble-nvim;
-              config = luafile ./plugins/trouble.lua;
-            }
-
-            {
-              plugin = telescope-nvim;
-              config = "luafile ${./plugins/telescope.lua}";
-            }
-
-            {
-              plugin = lualine-nvim;
-              config = "luafile ${./plugins/lualine.lua}";
-            }
-            {
-              plugin = refactoring-nvim;
-              config = "luafile ${./plugins/refactor.lua}";
-            }
-            cmp-buffer
-            cmp-path
-            cmp_luasnip
-            cmp-nvim-lsp
-            cmp-nvim-lua
-            vim-tmux-navigator
-            friendly-snippets
-            nvim-web-devicons
-            lspkind-nvim
             {
               plugin = (
                 nvim-treesitter.withPlugins (p: [
@@ -112,9 +50,38 @@
                 ])
               );
             }
-
+nvim-lspconfig
+cmp-nvim-lsp
+cmp-buffer
+luasnip
+gruvbox-nvim
+            tokyonight-nvim
+            lualine-nvim
+            lsp-zero-nvim
+            refactoring-nvim
+            harpoon
+            vim-fugitive
+            telescope-nvim
+            trouble-nvim
+            undotree
             vim-nix
+            nvim-cmp
+            cmp_luasnip
           ];
+
+          extraLuaConfig = ''
+
+            		${builtins.readFile ./plugins/icons.lua}
+            		${builtins.readFile ./plugins/cmp.lua}
+            		${builtins.readFile ./plugins/lsp.lua}
+            		${builtins.readFile ./plugins/lualine.lua}
+            		${builtins.readFile ./plugins/color.lua}
+            		${builtins.readFile ./plugins/refactoring.lua}
+            		${builtins.readFile ./plugins/fugitive.lua}
+            		${builtins.readFile ./plugins/harpoon.lua}
+            		${builtins.readFile ./plugins/set.lua}
+            		${builtins.readFile ./plugins/remap.lua}
+             	 '';
         };
     };
   };
