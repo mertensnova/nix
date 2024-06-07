@@ -7,6 +7,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./nvim
+    ./waybar
   ];
   options.myopt = {
     home-manager.enable = lib.mkEnableOption "home-manager";

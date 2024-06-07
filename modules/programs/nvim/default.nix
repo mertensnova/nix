@@ -32,6 +32,8 @@
             fd
             unzip
             ripgrep
+	    nixd
+nodejs_20
           ];
 
           plugins = with pkgs.vimPlugins; [
@@ -55,6 +57,7 @@ cmp-nvim-lsp
 cmp-buffer
 luasnip
 gruvbox-nvim
+friendly-snippets
             tokyonight-nvim
             lualine-nvim
             lsp-zero-nvim

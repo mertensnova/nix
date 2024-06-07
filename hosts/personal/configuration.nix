@@ -21,7 +21,8 @@
   myopt.hostname = "nixos";
   myopt.username = "mertens";
   myopt = {
- nvim-config.enable = true;
+    waybar.enable = true;
+    nvim-config.enable = true;
     home-manager.enable = true;
   };
 
@@ -42,17 +43,27 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.gvfs.enable = true;
   services.xserver.enable = true;
-
   services.xserver.displayManager.gdm.enable = false;
   services.xserver.desktopManager.gnome.enable = false;
   services.xserver.displayManager.lightdm.enable = true;
 
-  xdg.portal.enable =true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  #xdg.portal.enable =true;
+  #xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   
   services.printing.enable = false;
 
+
+xdg = {
+  portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+};
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
@@ -77,9 +88,12 @@
       zed-editor
       obsidian
       cmatrix
+      yt-dlp
       cava
+      qbittorrent-qt5
       pavucontrol
       vlc
+      ollama
       zoom-us
       discord
     ];
@@ -94,7 +108,10 @@
     file
     ffmpeg   
     vim
-    pulseaudio
+ gvfs
+      xfce.thunar-volman
+
+        pulseaudio
     wget
     neovim
     tmux

@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
@@ -25,16 +24,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
--- Golang
 lspconfig.gopls.setup{
   capabilities = capabilities,
 }
 
--- Nix
 lspconfig.nixd.setup{
   capabilities = capabilities,
 }
---Clanld
 lspconfig.clangd.setup{
   capabilities = capabilities,
 }
@@ -43,10 +39,6 @@ lspconfig.html.setup {
   capabilities = capabilities,
 }
 
-lspconfig.htmx.setup {
-  capabilities = capabilities,
-}
--- TypeScript
 lspconfig.tsserver.setup{
   capabilities = capabilities,
 }
