@@ -49,21 +49,16 @@
   services.xserver.desktopManager.gnome.enable = false;
   services.xserver.displayManager.lightdm.enable = true;
 
-  #xdg.portal.enable =true;
-  #xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   
   services.printing.enable = false;
-
-
-xdg = {
-  portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland
     ];
   };
-};
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
@@ -84,6 +79,7 @@ xdg = {
       telegram-desktop
       zathura
       firefox
+      obs-studio
       xfce.thunar
       zed-editor
       obsidian
@@ -93,9 +89,10 @@ xdg = {
       qbittorrent-qt5
       pavucontrol
       vlc
+      discord
       ollama
       zoom-us
-      discord
+obs-studio-plugins.obs-pipewire-audio-capture
     ];
   };
 
@@ -103,15 +100,17 @@ xdg = {
 
   environment.systemPackages = with pkgs; [
     home-manager
-    tree 
+    tree
+    wl-clipboard
+    xdg-utils
     feh
     file
     ffmpeg   
     vim
- gvfs
-      xfce.thunar-volman
-
-        pulseaudio
+    killall
+    gvfs
+    xfce.thunar-volman
+    pulseaudio
     wget
     neovim
     tmux
@@ -132,13 +131,15 @@ xdg = {
     brightnessctl
     waybar
     fastfetch
-];
+  ];
 
+networking.firewall.checkReversePath = "loose"; 
 networking.networkmanager.enable = true;
 programs.hyprland = {
 	enable = true;
 	xwayland.enable = true;
 };
+
 environment.sessionVariables = {
 	NIXOS_ONZONE_WL = "1";
 };
