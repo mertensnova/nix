@@ -7,7 +7,7 @@
           position = "top";
           layer = "top";
           height = 35;
-          margin-top = 10;
+          margin-top = 5;
           margin-bottom = 0;
           margin-left = 5;
           margin-right = 5;
@@ -130,6 +130,7 @@
           };
 
           pulseaudio = {
+	    on-click = "pavucontrol";
             format = "{icon} <b>{volume}</b> {format_source}";
             format-source = "{volume}%  ";
             format-source-muted = "  ";
