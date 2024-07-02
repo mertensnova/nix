@@ -1,0 +1,2 @@
+Nyx using NixOS ❄️ 
+
