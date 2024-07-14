@@ -5,19 +5,19 @@
       let
         custom = {
           font = "JetBrainsMono Nerd Font";
-          font_size = "13px";
+          font_size = "12px";
           font_weight = "bold";
           crust = "#000000";
           base = "#000000";
-          mantle = "#181825";
-          lavender = "#b4befe";
-          mauve = "#cba6f7";
-          peach = "#fab387";
-          red = "#f38ba8";
-          sapphire = "#74c7ec";
-          green = "#a6e3a1";
-          teal = "#94e2d5";
-          flamingo = "#f2cdcd";
+          mantle = "#FFFFFF";
+          lavender = "#FFFFFF";
+          mauve = "#FFFFFF";
+          peach = "#FFFFFF";
+          red = "#FFFFFF";
+          sapphire = "#FFFFFF";
+          green= "#FFFFFF";
+          teal = "#FFFFFF";
+          flamingo = "#FFFFFF";
           opacity = "0.98";
         };
       in

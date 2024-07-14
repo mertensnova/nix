@@ -1,4 +1,3 @@
- --[[
 require("tokyonight").setup({
   style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   transparent = false, -- Enable this to disable setting the background color
@@ -6,39 +5,32 @@ require("tokyonight").setup({
   styles = {
     comments = { italic = true },
     keywords = { italic = true },
-    functions = {},
-    variables = {},
   },
 
-  on_colors = function(colors)
-    colors.bg = "#000000"
-  end
 })
 vim.cmd[[colorscheme tokyonight]]
---]]
---
-require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = {
-    strings = true,
-    emphasis = true,
-    comments = true,
-    operators = false,
-    folds = true,
-  },
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {},
-  dim_inactive = false,
-  transparent_mode = false,
+
+--[[
+require('material').setup({
+
+    contrast = {
+        terminal = true, -- Enable contrast for the built-in terminal
+        sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+        floating_windows = false, -- Enable contrast for floating windows
+        cursor_line = false, -- Enable darker background for the cursor line
+        lsp_virtual_text = false, -- Enable contrasted background for lsp virtual text
+        non_current_windows = false, -- Enable contrasted background for non-current windows
+        filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
+    },
+
+
+    lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
+    async_loading = true, -- Load parts of the theme asynchronously for faster startup (turned on by default)
+    custom_colors = nil, -- If you want to override the default colors, set this to a function
+    custom_highlights = {}, -- Overwrite highlights with your own
 })
-vim.cmd("colorscheme gruvbox")
+
+vim.g.material_style = "deep ocean"
+vim.cmd("colorscheme material")
+
+--]]

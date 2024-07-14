@@ -33,7 +33,7 @@
             unzip
             ripgrep
 	    nixd
-nodejs_20
+            nodejs_20
           ];
 
           plugins = with pkgs.vimPlugins; [
@@ -52,13 +52,14 @@ nodejs_20
                 ])
               );
             }
-nvim-lspconfig
-cmp-nvim-lsp
-cmp-buffer
-luasnip
-gruvbox-nvim
-friendly-snippets
+            nvim-web-devicons
             tokyonight-nvim
+	    nvim-lspconfig
+	    cmp-nvim-lsp
+	    cmp-buffer
+	    luasnip
+	    friendly-snippets
+	    material-nvim
             lualine-nvim
             lsp-zero-nvim
             refactoring-nvim

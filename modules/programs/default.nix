@@ -9,6 +9,10 @@
     ./nvim
     ./waybar
     ./themes
+    ./tmux
+./kitty
+
+./tofi
   ];
   options.myopt = {
     home-manager.enable = lib.mkEnableOption "home-manager";

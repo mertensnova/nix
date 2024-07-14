@@ -6,6 +6,7 @@
        ../../options/locale.nix
        ../../options/grub.nix
        ../../options/sound.nix
+     #  ../../options/hypr
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -15,6 +16,10 @@
   myopt.username = "mertens";
 
   myopt = {
+
+tofi.enable = true;
+kitty.enable =true;
+tmux.enable =true;
     gtk.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
@@ -25,10 +30,12 @@
  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   services.gvfs.enable = true;
-  services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  
-  xdg.portal = {
+  services.xserver.displayManager.lightdm.enable = true;  
+services.xserver.enable = true;
+
+   # Enable nix ld
+ # programs.nix-ld.enable = true;
+xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
@@ -36,6 +43,12 @@
       xdg-desktop-portal-hyprland
     ];
   };
+
+programs.hyprland = {
+	enable = true;
+	xwayland.enable = true;
+};
+
 
   users.users.mertens = {
     isNormalUser = true;
@@ -46,16 +59,16 @@
       zathura
       firefox
       xfce.thunar
-      zed-editor
       obsidian
+      zed-editor
       cmatrix
       yt-dlp
       qbittorrent-qt5
       pavucontrol
       vlc
-      ollama
       zoom-us
-      signal-desktop
+      bleachbit
+lxappearance
     ];
   };
 
@@ -64,6 +77,8 @@
   environment.systemPackages = with pkgs; [
     home-manager
     tree
+    dwarfs
+    fuse-overlayfs
     wl-clipboard
     xdg-utils
     feh
@@ -75,34 +90,31 @@
     xfce.thunar-volman
     pulseaudio
     wget
-    neovim
     tmux
-    kitty
     git
-    hyprland
-    hyprpaper 
-    wofi
+    neovim
     ncdu
     btop
     networkmanager
     lightdm
     unzip
-    hyprshot
     wireguard-tools
+  
+   kitty
+    tofi
+    hyprland
+    hyprpaper 
     wayland
+    hyprshot
     hyprlock
-    brightnessctl
     waybar
+    brightnessctl
     nitch
+    fastfetch
   ];
 
 networking.firewall.checkReversePath = "loose"; 
 networking.networkmanager.enable = true;
-
-programs.hyprland = {
-	enable = true;
-	xwayland.enable = true;
-};
 
 environment.sessionVariables = {
 	NIXOS_ONZONE_WL = "1";
