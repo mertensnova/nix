@@ -6,7 +6,7 @@
        ../../options/locale.nix
        ../../options/grub.nix
        ../../options/sound.nix
-     #  ../../options/hypr
+      # ../../modules/programs/hypr
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -43,7 +43,6 @@ xdg.portal = {
       xdg-desktop-portal-hyprland
     ];
   };
-
 programs.hyprland = {
 	enable = true;
 	xwayland.enable = true;
@@ -100,7 +99,7 @@ lxappearance
     unzip
     wireguard-tools
   
-   kitty
+    kitty
     tofi
     hyprland
     hyprpaper 

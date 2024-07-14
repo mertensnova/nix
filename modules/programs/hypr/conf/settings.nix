@@ -9,7 +9,7 @@
     ];
 
     input = {
-      kb_layout = "pt";
+      kb_layout = "us";
       follow_mouse = 1;
       force_no_accel = true;
       natural_scroll = false;
@@ -33,15 +33,10 @@
       pseudotile = true;
     };
 
-    master = {
-      new_is_master = false;
-    };
-
+    
     animations = {
-
       enabled = true;
- bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-
+/*
     animation = [
 "myBezier, 0.05, 0.9, 0.1, 1.05"
        "windows, 1, 7, myBezier"
@@ -51,7 +46,8 @@
        "fade, 1, 7, default"
       "workspaces, 1, 6, default"
 ];
-    };
+*/
+};
 
     decoration = {
       rounding = 3;

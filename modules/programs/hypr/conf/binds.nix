@@ -7,11 +7,11 @@
 {
    wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
-    "$menu"= " wofi --show drun";
+"$menu" =  "tofi-drun --drun-launch=true";
     "$terminal" = "kitty";
     bindm = [
       "$mainMod,mouse:272,movewindow"
-      "$mainMod,mouse:273,resizewindow"
+      "$mainMod, mouse:273, resizewindow"
     ];
     bind = [
       "$mainMod, RETURN, exec, $terminal"
@@ -54,7 +54,6 @@
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
       "$mainMod, mouse:272, movewindow"
-      "$mainMod, mouse:273, resizewindow"
       ",XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +5%"
       ",XF86AudioLowerVolume, exec, pactl set-sink-volume 0 -5%"
       ",XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
