@@ -41,20 +41,22 @@
             .modules-left {
                 background-color: ${custom.crust};
                 border-radius: 8px;
-                padding-right: 15px;
-                padding-left: 15px;
+                padding-right: 5px;
+                padding-left: 5px;
             }
 
             .modules-center {
                 background-color: ${custom.crust};
                 border-radius: 8px;
-                padding-right: 10px;
-                padding-left: 10px;
+
+                padding-right: 15px;
+                padding-left: 15px;
             }
 
             .modules-right {
                 background-color: ${custom.crust};
                 border-radius: 8px;
+
                 padding-right: 15px;
                 padding-left: 15px;
             }
@@ -71,7 +73,7 @@
             #temperature {
                 font-size: 14px;
                 background: ${custom.crust};
-                margin-top: 5px;
+               margin-top: 5px;
                 margin-bottom: 5px;
             }
 

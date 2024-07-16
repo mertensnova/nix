@@ -16,22 +16,20 @@
   myopt.username = "mertens";
 
   myopt = {
-
-tofi.enable = true;
-kitty.enable =true;
-tmux.enable =true;
-    gtk.enable = true;
+    tofi.enable = true;
+    kitty.enable =true;
+    tmux.enable =true;
+  #  gtk.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
     home-manager.enable = true;
   };
 
-
  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   services.gvfs.enable = true;
   services.xserver.displayManager.lightdm.enable = true;  
-services.xserver.enable = true;
+  services.xserver.enable = true;
 
    # Enable nix ld
  # programs.nix-ld.enable = true;
@@ -65,9 +63,9 @@ programs.hyprland = {
       qbittorrent-qt5
       pavucontrol
       vlc
+      cava
       zoom-us
       bleachbit
-lxappearance
     ];
   };
 
@@ -98,7 +96,6 @@ lxappearance
     lightdm
     unzip
     wireguard-tools
-  
     kitty
     tofi
     hyprland
@@ -109,6 +106,7 @@ lxappearance
     waybar
     brightnessctl
     nitch
+    htop
     fastfetch
   ];
 
