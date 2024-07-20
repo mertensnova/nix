@@ -16,10 +16,11 @@
   myopt.username = "mertens";
 
   myopt = {
+    starship.enable = true;
     tofi.enable = true;
     kitty.enable =true;
     tmux.enable =true;
-  #  gtk.enable = true;
+  # gtk.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
     home-manager.enable = true;
@@ -28,11 +29,25 @@
  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   services.gvfs.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;  
+  services.displayManager.sddm.enable = true;  
   services.xserver.enable = true;
 
    # Enable nix ld
- # programs.nix-ld.enable = true;
+   programs.nix-ld.enable = true;
+/*
+   programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+    dwarfs
+    fuse-overlayfs
+  ];
+  */
 xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -59,6 +74,7 @@ programs.hyprland = {
       obsidian
       zed-editor
       cmatrix
+      gparted
       yt-dlp
       qbittorrent-qt5
       pavucontrol
@@ -66,13 +82,14 @@ programs.hyprland = {
       cava
       zoom-us
       bleachbit
+    #  steam-small
+      hyprshot
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    home-manager
     tree
     dwarfs
     fuse-overlayfs
@@ -85,29 +102,21 @@ programs.hyprland = {
     killall
     gvfs
     xfce.thunar-volman
-    pulseaudio
     wget
-    tmux
     git
-    neovim
     ncdu
     btop
     networkmanager
-    lightdm
     unzip
     wireguard-tools
-    kitty
-    tofi
     hyprland
     hyprpaper 
     wayland
-    hyprshot
     hyprlock
-    waybar
     brightnessctl
     nitch
-    htop
     fastfetch
+    pulseaudio
   ];
 
 networking.firewall.checkReversePath = "loose"; 

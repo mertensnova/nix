@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""
+--vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -32,11 +32,7 @@ vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
-
 vim.cmd[[set background=dark]]
-
 vim.cmd[[let g:airline_theme = 'one']]
-
 vim.cmd[[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]]
-
 vim.cmd[[set termguicolors]]
