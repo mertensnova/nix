@@ -12,10 +12,6 @@
   config = lib.mkIf config.myopt.nvim-config.enable {
     home-manager.users.${config.myopt.username} = {
       programs.neovim =
-        let
-          lua = str: "lua << EOF\n${str}\nEOF\n";
-          luafile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-        in
         {
           enable = true;
           viAlias = true;
@@ -30,9 +26,10 @@
             gopls
             python3
             fd
+            alejandra
             unzip
             ripgrep
-	    nixd
+	        nixd
             nodejs_20
           ];
 
@@ -52,16 +49,18 @@
                 ])
               );
             }
+            neoformat
             nvim-web-devicons
             tokyonight-nvim
-	    nvim-lspconfig
-	    cmp-nvim-lsp
-	    cmp-buffer
-	    luasnip
-	    friendly-snippets
-	    material-nvim
+	        nvim-lspconfig
+	        cmp-nvim-lsp
+	        cmp-buffer
+	        luasnip
+	        friendly-snippets
+	        material-nvim
             lualine-nvim
             lsp-zero-nvim
+            formatter-nvim
             refactoring-nvim
             harpoon
             vim-fugitive
@@ -74,7 +73,6 @@
           ];
 
           extraLuaConfig = ''
-
             		${builtins.readFile ./plugins/icons.lua}
             		${builtins.readFile ./plugins/cmp.lua}
             		${builtins.readFile ./plugins/lsp.lua}
@@ -84,7 +82,9 @@
             		${builtins.readFile ./plugins/fugitive.lua}
             		${builtins.readFile ./plugins/harpoon.lua}
             		${builtins.readFile ./plugins/set.lua}
-            		${builtins.readFile ./plugins/remap.lua}
+                    ${builtins.readFile ./plugins/remap.lua}
+                    ${builtins.readFile ./plugins/formatting.lua}
+
              	 '';
         };
     };

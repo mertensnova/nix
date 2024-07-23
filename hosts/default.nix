@@ -12,7 +12,7 @@ in {
     };
     modules = [
       ./personal
-      "${self}/modules/default.nix"
+      "${self}/modules"
     ];
   };
 

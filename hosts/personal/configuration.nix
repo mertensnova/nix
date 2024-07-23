@@ -1,71 +1,64 @@
-{ inputs,config, pkgs, ... }:
 {
- imports =
-    [ 
-       ../../options/fonts.nix
-       ../../options/locale.nix
-       ../../options/grub.nix
-       ../../options/sound.nix
-      # ../../modules/programs/hypr
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
-
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ../../options/fonts.nix
+    ../../options/locale.nix
+    ../../options/grub.nix
+    ../../options/sound.nix
+    # ../../modules/programs/hypr
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   myopt.hostname = "nixos";
   myopt.username = "mertens";
 
   myopt = {
-    starship.enable = true;
+   #starship.enable = true;
     tofi.enable = true;
-    kitty.enable =true;
-    tmux.enable =true;
-  # gtk.enable = true;
+    kitty.enable = true;
+    tmux.enable = true;
+    # gtk.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
     home-manager.enable = true;
   };
 
- nix.settings.experimental-features = ["nix-command" "flakes"];
+  hardware.pulseaudio.enable = false;
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   services.gvfs.enable = true;
-  services.displayManager.sddm.enable = true;  
+  services.displayManager.sddm.enable = true;
   services.xserver.enable = true;
 
-   # Enable nix ld
-   programs.nix-ld.enable = true;
-/*
-   programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    fuse3
-    icu
-    nss
-    openssl
-    curl
-    expat
-    dwarfs
-    fuse-overlayfs
-  ];
-  */
-xdg.portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
       xdg-desktop-portal-hyprland
     ];
+    };
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
-programs.hyprland = {
-	enable = true;
-	xwayland.enable = true;
-};
-
-
   users.users.mertens = {
     isNormalUser = true;
     description = "mertens";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       telegram-desktop
       zathura
@@ -82,7 +75,7 @@ programs.hyprland = {
       cava
       zoom-us
       bleachbit
-    #  steam-small
+      #  steam-small
       hyprshot
     ];
   };
@@ -97,7 +90,7 @@ programs.hyprland = {
     xdg-utils
     feh
     file
-    ffmpeg   
+    ffmpeg
     vim
     killall
     gvfs
@@ -110,7 +103,7 @@ programs.hyprland = {
     unzip
     wireguard-tools
     hyprland
-    hyprpaper 
+    hyprpaper
     wayland
     hyprlock
     brightnessctl
@@ -119,16 +112,18 @@ programs.hyprland = {
     pulseaudio
   ];
 
-networking.firewall.checkReversePath = "loose"; 
-networking.networkmanager.enable = true;
+  networking.firewall.checkReversePath = "loose";
+  networking.networkmanager.enable = true;
 
-environment.sessionVariables = {
-	NIXOS_ONZONE_WL = "1";
-};
+  environment.sessionVariables = {
+    NIXOS_ONZONE_WL = "1";
+  };
 
-hardware = {
-graphics.enable = true;
-};
+  hardware = {
+    graphics.enable = true;
+  };
   services.openssh.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 }
+
+
