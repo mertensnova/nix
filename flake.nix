@@ -1,35 +1,29 @@
-
 {
   description = "Nyx using NixOS";
 
-  outputs = { self, nixpkgs,... }@inputs: {
-
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: {
     nixosConfigurations = import ./hosts {inherit nixpkgs inputs self;};
   };
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-        waybar.url = "github:Alexays/Waybar";
+    waybar.url = "github:Alexays/Waybar";
     hyprlock = {
-            url = "github:hyprwm/hyprlock";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-     home-manager = {
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
- zed-editor = {
+    zed-editor = {
       url = "github:zed-industries/zed";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
-
- };
-
-
-
+  };
 }
-

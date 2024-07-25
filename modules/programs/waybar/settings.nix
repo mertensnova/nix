@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf config.myopt.waybar.enable {
     home-manager.users.${config.myopt.username} = {
       programs.waybar.settings = [
@@ -24,7 +27,7 @@
             "tray"
           ];
 
-          modules-center = [ "hyprland/workspaces" ];
+          modules-center = ["hyprland/workspaces"];
 
           modules-right = [
             "network"
@@ -121,7 +124,6 @@
               " "
               " "
             ];
-
           };
 
           tray = {
@@ -130,7 +132,7 @@
           };
 
           pulseaudio = {
-	    on-click = "pavucontrol";
+            on-click = "pavucontrol";
             format = "{icon} <b>{volume}</b> {format_source}";
             format-source = "{volume}%  ";
             format-source-muted = "  ";
@@ -145,7 +147,6 @@
               ];
             };
             scroll-step = 5;
-
           };
 
           temperature = {
@@ -162,7 +163,6 @@
 
           "custom/icon" = {
             format = "";
-
           };
 
           "custom/separtor" = {
@@ -172,13 +172,8 @@
           "custom/window-icon" = {
             # to be added
           };
-
         }
-
       ];
-
     };
   };
 }
-
-

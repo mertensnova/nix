@@ -4,23 +4,22 @@
   config,
   ...
 }: {
-  options.myopt= {
+  options.myopt = {
     kitty.enable = lib.mkEnableOption "kitty";
   };
 
   config = lib.mkIf config.myopt.kitty.enable {
     home-manager.users.${config.myopt.username} = {
       programs.kitty.enable = true;
-programs.kitty.extraConfig = with config.stylix.base16Scheme; '' 
-  foreground #FFFFFF
-  background #000000
-'';
+      programs.kitty.extraConfig = with config.stylix.base16Scheme; ''
+        foreground #FFFFFF
+        background #000000
+      '';
       programs.kitty = {
         settings = {
           font_family = "JetbrainsMono Nerd Font";
 
           font_size = "11.6";
-
 
           background_opacity = "0.8";
           cursor_shape = "block";
@@ -40,10 +39,7 @@ programs.kitty.extraConfig = with config.stylix.base16Scheme; ''
           tab_powerline_style = "angled";
           close_on_child_death = true;
           allow_remote_control = true;
-
         };
-
-          
       };
     };
   };

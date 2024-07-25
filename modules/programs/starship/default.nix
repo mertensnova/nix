@@ -2,9 +2,7 @@
   lib,
   config,
   ...
-}:
-{
-
+}: {
   options.myopt = {
     starship.enable = lib.mkEnableOption "starship";
   };
@@ -16,4 +14,3 @@
     };
   };
 }
-

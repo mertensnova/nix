@@ -15,5 +15,4 @@ in {
       "${self}/modules"
     ];
   };
-
 }

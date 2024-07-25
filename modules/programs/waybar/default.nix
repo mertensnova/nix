@@ -2,10 +2,8 @@
   lib,
   config,
   ...
-}:
-{
-
-  imports = [ ./settings.nix ./styles.nix ];
+}: {
+  imports = [./settings.nix ./styles.nix];
   options.myopt = {
     waybar.enable = lib.mkEnableOption "waybar";
   };
@@ -17,4 +15,3 @@
     };
   };
 }
-

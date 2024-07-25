@@ -1,18 +1,13 @@
-{ ... }:
-let
-in
-{
+{...}: let
+in {
   programs.hyprlock.enable = true;
 
   programs.hyprlock.settings = {
-
     general = [
-
       {
         disable_loading_bar = false;
         hide_cursor = true;
         no_fade_in = true;
-
       }
     ];
     background = [
@@ -27,7 +22,6 @@ in
         brightness = 0.8172;
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
-
       }
     ];
 
@@ -71,10 +65,8 @@ in
         position = "0, 80";
         halign = "center";
         valign = "center";
-
       }
       {
-
         monitor = "";
         text = "󰌾 <br/>";
         color = "rgba(255, 255, 255, 1)";
@@ -88,5 +80,3 @@ in
     ];
   };
 }
-
-

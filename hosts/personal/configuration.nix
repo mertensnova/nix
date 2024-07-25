@@ -3,9 +3,9 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
+    ../../options/printing.nix
     ../../options/fonts.nix
     ../../options/locale.nix
     ../../options/grub.nix
@@ -19,7 +19,7 @@
   myopt.username = "mertens";
 
   myopt = {
-   #starship.enable = true;
+    #starship.enable = true;
     tofi.enable = true;
     kitty.enable = true;
     tmux.enable = true;
@@ -45,8 +45,9 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
       xdg-desktop-portal-hyprland
+      xwaylandvideobridge
     ];
-    };
+  };
 
   programs.hyprland = {
     enable = true;
@@ -62,12 +63,12 @@
     packages = with pkgs; [
       telegram-desktop
       zathura
+      keepassxc
       firefox
       xfce.thunar
       obsidian
       zed-editor
       cmatrix
-      gparted
       yt-dlp
       qbittorrent-qt5
       pavucontrol
@@ -75,8 +76,9 @@
       cava
       zoom-us
       bleachbit
-      #  steam-small
       hyprshot
+      nheko
+      obs-studio
     ];
   };
 
@@ -105,11 +107,13 @@
     hyprland
     hyprpaper
     wayland
+    alejandra
     hyprlock
     brightnessctl
     nitch
     fastfetch
     pulseaudio
+    android-tools
   ];
 
   networking.firewall.checkReversePath = "loose";
@@ -125,5 +129,3 @@
   services.openssh.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-
-

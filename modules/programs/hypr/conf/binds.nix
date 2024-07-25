@@ -3,11 +3,10 @@
   config,
   pkgs,
   ...
-}:
-{
-   wayland.windowManager.hyprland.settings = {
+}: {
+  wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
-"$menu" =  "tofi-drun --drun-launch=true";
+    "$menu" = "tofi-drun --drun-launch=true";
     "$terminal" = "kitty";
     bindm = [
       "$mainMod,mouse:272,movewindow"
@@ -66,5 +65,3 @@
     ];
   };
 }
-
-

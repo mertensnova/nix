@@ -8,7 +8,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./nvim
     ./waybar
-   # ./themes
+    # ./themes
     ./tmux
     ./kitty
     ./tofi
