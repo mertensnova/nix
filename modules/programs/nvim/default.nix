@@ -13,8 +13,8 @@
       programs.neovim = {
         enable = true;
         viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
+        vimAlias = false;
+        vimdiffAlias = false;
 
         extraPackages = with pkgs; [
           go

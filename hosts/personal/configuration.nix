@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }: {
@@ -10,7 +9,7 @@
     ../../options/locale.nix
     ../../options/grub.nix
     ../../options/sound.nix
-    # ../../modules/programs/hypr
+    #../../modules/programs/hypr
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -19,7 +18,9 @@
   myopt.username = "mertens";
 
   myopt = {
-    #starship.enable = true;
+    hyprland.enable = true;
+    hyprlock.enable = true;
+
     tofi.enable = true;
     kitty.enable = true;
     tmux.enable = true;
@@ -37,7 +38,8 @@
 
   services.gvfs.enable = true;
   services.displayManager.sddm.enable = true;
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -48,11 +50,11 @@
       xwaylandvideobridge
     ];
   };
+  #
+  #xdg.portal.config.common.default = "*";
+  #programs.hyprland.enable = true;
+  #programs.hyprland.xwayland.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
   users.users.mertens = {
     isNormalUser = true;
     description = "mertens";
@@ -70,14 +72,13 @@
       zed-editor
       cmatrix
       yt-dlp
-      qbittorrent-qt5
       pavucontrol
       vlc
       cava
       zoom-us
       bleachbit
       hyprshot
-      nheko
+      discord
       obs-studio
     ];
   };
@@ -119,13 +120,13 @@
   networking.firewall.checkReversePath = "loose";
   networking.networkmanager.enable = true;
 
+  hardware = {
+    graphics.enable = true;
+  };
   environment.sessionVariables = {
     NIXOS_ONZONE_WL = "1";
   };
 
-  hardware = {
-    graphics.enable = true;
-  };
   services.openssh.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 }

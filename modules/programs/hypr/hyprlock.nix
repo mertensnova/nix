@@ -1,3 +1,96 @@
+{
+  lib,
+  config,
+  ...
+}: {
+  options.myopt = {
+    hyprlock.enable = lib.mkEnableOption "hyprlock";
+  };
+  config = lib.mkIf config.myopt.hyprlock.enable {
+    home-manager.users.${config.myopt.username} = {
+      programs.hyprlock.enable = true;
+
+      programs.hyprlock.settings = {
+        general = [
+          {
+            disable_loading_bar = false;
+            hide_cursor = true;
+            no_fade_in = true;
+          }
+        ];
+        background = [
+          {
+            monitor = "";
+            path = "/home/mertens/Pictures/wallpapers/nix.png";
+            blur_passes = 2;
+            blur_size = 7;
+            color = "rgba(20, 20, 20, 0.9)";
+            noise = 1.17e-2;
+            contrast = 0.8916;
+            brightness = 0.8172;
+            vibrancy = 0.1696;
+            vibrancy_darkness = 0.0;
+          }
+        ];
+
+        input-field = [
+          {
+            monitor = "";
+            size = "330, 35";
+            outline_thickness = 0;
+            dots_size = 0.33; # Scale of input-field height, 0.2 - 0.8
+            dots_spacing = 0.15; # Scale of dot's absolute size, 0.0 - 1.0
+            outer_color = "rgb(166, 173, 200)";
+            inner_color = "rgba(225, 225, 225, 0.7)";
+            font_color = "rgb(166, 173, 200)";
+            hide_input = false;
+
+            position = "0, -20";
+            halign = "center";
+            valign = "center";
+          }
+        ];
+
+        label = [
+          {
+            monitor = "";
+            text = "$TIME";
+            color = "rgba(255, 255, 255, 1)";
+            font_family = "JetBrainsMono Nerd Font";
+            font_size = 40;
+
+            position = "0, -100";
+            halign = "center";
+            valign = "top";
+          }
+          {
+            monitor = "";
+            text = "Hey! $USER";
+            color = "rgba(255, 255, 255, 1)";
+            font_size = 22;
+            font_family = "JetBrainsMono Nerd Font";
+
+            position = "0, 80";
+            halign = "center";
+            valign = "center";
+          }
+          {
+            monitor = "";
+            text = "󰌾 <br/>";
+            color = "rgba(255, 255, 255, 1)";
+            font_size = 25;
+            font_family = "JetBrainsMono Nerd Font";
+
+            position = "0, 0";
+            halign = "center";
+            valign = "bottom";
+          }
+        ];
+      };
+    };
+  };
+}
+/*
 {...}: let
 in {
   programs.hyprlock.enable = true;
@@ -79,4 +172,6 @@ in {
       }
     ];
   };
-}
+  }
+*/
+

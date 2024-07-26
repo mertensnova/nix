@@ -12,7 +12,7 @@
     ./tmux
     ./kitty
     ./tofi
-    ./starship
+    ./hypr
   ];
   options.myopt = {
     home-manager.enable = lib.mkEnableOption "home-manager";
