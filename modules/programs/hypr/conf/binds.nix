@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.myopt.waybar.enable {
+  config = lib.mkIf config.myopt.hyprland.enable {
     home-manager.users.${config.myopt.username} = {
       wayland.windowManager.hyprland.settings = {
         "$mainMod" = "SUPER";

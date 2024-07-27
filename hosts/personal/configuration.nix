@@ -9,7 +9,6 @@
     ../../options/locale.nix
     ../../options/grub.nix
     ../../options/sound.nix
-    #../../modules/programs/hypr
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -18,8 +17,10 @@
   myopt.username = "mertens";
 
   myopt = {
+    home-manager.enable = true;
     hyprland.enable = true;
     hyprlock.enable = true;
+    hyprpaper.enable = true;
 
     tofi.enable = true;
     kitty.enable = true;
@@ -27,10 +28,10 @@
     # gtk.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
-    home-manager.enable = true;
   };
 
   hardware.pulseaudio.enable = false;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -38,22 +39,7 @@
 
   services.gvfs.enable = true;
   services.displayManager.sddm.enable = true;
-  #services.xserver.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
-      xwaylandvideobridge
-    ];
-  };
-  #
-  #xdg.portal.config.common.default = "*";
-  #programs.hyprland.enable = true;
-  #programs.hyprland.xwayland.enable = true;
 
   users.users.mertens = {
     isNormalUser = true;
@@ -62,6 +48,7 @@
       "networkmanager"
       "wheel"
     ];
+
     packages = with pkgs; [
       telegram-desktop
       zathura
@@ -105,11 +92,8 @@
     networkmanager
     unzip
     wireguard-tools
-    hyprland
-    hyprpaper
     wayland
     alejandra
-    hyprlock
     brightnessctl
     nitch
     fastfetch

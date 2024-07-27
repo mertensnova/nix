@@ -3,9 +3,10 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.myopt.waybar.enable {
+  config = lib.mkIf config.myopt.hyprland.enable {
     home-manager.users.${config.myopt.username} = {
       wayland.windowManager.hyprland.settings = {
+        exec-once = ["pkill waybar;waybar &; kitty; hyprpaper"];
         monitor = ",preferred,auto,auto";
         env = [
           "QT_QPA_PLATFORMTHEME,qt5ct"
