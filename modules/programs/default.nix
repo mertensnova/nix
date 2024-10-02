@@ -8,11 +8,11 @@
     inputs.home-manager.nixosModules.home-manager
     ./nvim
     ./waybar
-    # ./themes
     ./tmux
     ./kitty
     ./tofi
     ./hypr
+    ./zsh
   ];
   options.myopt = {
     home-manager.enable = lib.mkEnableOption "home-manager";
@@ -27,7 +27,6 @@
 
     home-manager.users.${config.myopt.username} = {
       home.stateVersion = config.system.stateVersion;
-      home.sessionVariables.GTK_THEME = "Tokyonight-Dark-B";
     };
   };
 }

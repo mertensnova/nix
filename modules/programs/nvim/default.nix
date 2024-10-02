@@ -44,12 +44,15 @@
                 p.tree-sitter-make
                 p.tree-sitter-cmake
                 p.tree-sitter-json
+                p.tree-sitter-templ
+                p.tree-sitter-html
+                p.tree-sitter-javascript
               ])
             );
           }
           neoformat
+          colorbuddy-nvim
           nvim-web-devicons
-          tokyonight-nvim
           nvim-lspconfig
           cmp-nvim-lsp
           cmp-buffer
@@ -67,6 +70,7 @@
           undotree
           vim-nix
           nvim-cmp
+          coc-diagnostic
           cmp_luasnip
         ];
 

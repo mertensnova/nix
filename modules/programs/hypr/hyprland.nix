@@ -19,15 +19,6 @@
       xwayland.enable = true;
     };
 
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-hyprland
-        xwaylandvideobridge
-      ];
-    };
     home-manager.users.${config.myopt.username} = {
       wayland.windowManager.hyprland = {
         enable = true;

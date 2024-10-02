@@ -25,13 +25,11 @@
     tofi.enable = true;
     kitty.enable = true;
     tmux.enable = true;
-    # gtk.enable = true;
+    zsh.enable = true;
     waybar.enable = true;
     nvim-config.enable = true;
   };
-
   hardware.pulseaudio.enable = false;
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -41,6 +39,7 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
+  programs.nix-ld.enable = true;
   users.users.mertens = {
     isNormalUser = true;
     description = "mertens";
@@ -48,11 +47,9 @@
       "networkmanager"
       "wheel"
     ];
-
     packages = with pkgs; [
       telegram-desktop
       zathura
-      keepassxc
       firefox
       xfce.thunar
       obsidian
@@ -65,8 +62,18 @@
       zoom-us
       bleachbit
       hyprshot
+      burpsuite
       discord
-      obs-studio
+      neovide
+    ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland
     ];
   };
 
@@ -74,15 +81,12 @@
 
   environment.systemPackages = with pkgs; [
     tree
-    dwarfs
-    fuse-overlayfs
     wl-clipboard
     xdg-utils
     feh
     file
     ffmpeg
     vim
-    killall
     gvfs
     xfce.thunar-volman
     wget
@@ -96,9 +100,9 @@
     alejandra
     brightnessctl
     nitch
+    fzf
     fastfetch
     pulseaudio
-    android-tools
   ];
 
   networking.firewall.checkReversePath = "loose";

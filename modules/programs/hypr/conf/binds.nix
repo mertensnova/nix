@@ -14,6 +14,7 @@
           "$mainMod, mouse:273, resizewindow"
         ];
         bind = [
+          "$mainMod, F , fullscreen"
           "$mainMod, RETURN, exec, $terminal"
           "$mainMod SHIFT, q, killactive"
           "$mainMod SHIFT, e, exit"

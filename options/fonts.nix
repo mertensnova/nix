@@ -8,12 +8,16 @@
       material-design-icons
       (nerdfonts.override {
         fonts = [
+          "IBMPlexMono"
+          "CascadiaCode"
+          "FiraCode"
           "JetBrainsMono"
         ];
       })
+      noto-fonts-cjk
+      dejavu_fonts
+      maple-mono-NF
       noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
       noto-fonts-emoji
     ];
   };

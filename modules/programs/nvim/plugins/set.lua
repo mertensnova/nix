@@ -1,4 +1,10 @@
 --vim.opt.guicursor = ""
+--
+--
+if vim.g.neovide then
+    vim.g.neovide_scale_factor = 0.9
+   -- vim.o.guifont = "JetBrainsMono:h12"
+end
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

@@ -27,19 +27,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 lspconfig.gopls.setup{
   capabilities = capabilities,
 }
-
+lspconfig.templ.setup{
+  capabilities = capabilities,
+}
 lspconfig.nixd.setup{
   capabilities = capabilities,
 }
 lspconfig.clangd.setup{
   capabilities = capabilities,
 }
-
 lspconfig.html.setup {
   capabilities = capabilities,
 }
-
-lspconfig.tsserver.setup{
+lspconfig.ts_ls.setup{
   capabilities = capabilities,
 }
 

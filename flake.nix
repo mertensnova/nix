@@ -4,13 +4,14 @@
   outputs = {
     self,
     nixpkgs,
+    stylix,
     ...
   } @ inputs: {
-    nixosConfigurations = import ./hosts {inherit nixpkgs inputs self;};
+    nixosConfigurations = import ./hosts {inherit nixpkgs inputs self stylix;};
   };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    stylix.url = "github:danth/stylix";
     waybar.url = "github:Alexays/Waybar";
     hyprlock = {
       url = "github:hyprwm/hyprlock";
