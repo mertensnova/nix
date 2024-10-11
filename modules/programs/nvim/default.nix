@@ -23,8 +23,6 @@
           clang-tools
           gopls
           python3
-          fd
-          alejandra
           unzip
           ripgrep
           nixd
@@ -68,7 +66,6 @@
           telescope-nvim
           trouble-nvim
           undotree
-          vim-nix
           nvim-cmp
           coc-diagnostic
           cmp_luasnip

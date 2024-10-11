@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   themes = {
     oxocarbon-dark = "oxocarbon-dark";
     lackluster = {
@@ -23,7 +27,12 @@
     };
   };
 in {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   stylix = {
+    image = /home/mertens/Pictures/wallpapers/wo.png;
     enable = true;
     autoEnable = true;
     base16Scheme = themes.lackluster;
@@ -39,6 +48,31 @@ in {
       terminal = 1.0;
       desktop = 1.0;
       popups = 1.0;
+    };
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        name = "JetBrains Mono Nerd Font";
+      };
+      sansSerif = {
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SFProDisplay Nerd Font";
+      };
+      serif = {
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SFProDisplay Nerd Font";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+      sizes = {
+        applications = 12;
+        desktop = 12;
+        popups = 11;
+        terminal = 12;
+      };
     };
   };
 }

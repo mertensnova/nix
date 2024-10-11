@@ -6,6 +6,8 @@
   config = {
     fonts.packages = with pkgs; [
       material-design-icons
+
+      inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
       (nerdfonts.override {
         fonts = [
           "IBMPlexMono"

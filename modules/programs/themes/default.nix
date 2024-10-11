@@ -1,17 +1,40 @@
 {
   lib,
-  pkgs,
   config,
+  pkgs,
   ...
-}: {
-  options.myopt = {
-    gtk.enable = lib.mkEnableOption "gtk";
-  };
-  config = lib.mkMerge [
-    (lib.mkIf config.myopt.gtk.enable {
-      programs.dconf.enable = true;
-      home-manager.users.${config.myopt.username} = {
+}:
+with lib; let
+  cfg = config.modules.gtk;
+in {
+  options.modules.gtk = {enable = mkEnableOption "gtk";};
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      dconf
+      gtk-engine-murrine
+      gnome.gnome-themes-extra
+    ];
+    home.sessionVariables.GTK_THEME = "Catppuccin-Macchiato-Compact-Mauve-Dark";
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Catppuccin-Macchiato-Compact-Mauve-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["mauve"];
+          size = "compact";
+          tweaks = [];
+          variant = "macchiato";
+        };
       };
-    })
-  ];
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders;
+      };
+    };
+    home.pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.catppuccin-cursors.macchiatoMauve;
+      name = "Catppuccin-Macchiato-Mauve-Cursors";
+    };
+  };
 }

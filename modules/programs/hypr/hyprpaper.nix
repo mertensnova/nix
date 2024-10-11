@@ -14,10 +14,10 @@
         splash = true;
         splash_offset = 2.0;
 
-        preload = ["/home/mertens/Pictures/wallpapers/an.jpg"];
+        preload = ["/home/mertens/Pictures/wallpapers/wo.png"];
 
         wallpaper = [
-          "eDP-1,/home/mertens/Pictures/wallpapers/an.jpg"
+          "eDP-1,/home/mertens/Pictures/wallpapers/wo.png"
         ];
       };
     };

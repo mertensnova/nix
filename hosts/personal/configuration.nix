@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
+    ../../options/stylix.nix
     ../../options/printing.nix
-    ../../options/fonts.nix
     ../../options/locale.nix
     ../../options/grub.nix
     ../../options/sound.nix
@@ -21,14 +21,15 @@
     hyprland.enable = true;
     hyprlock.enable = true;
     hyprpaper.enable = true;
-
+    waybar.enable = true;
     tofi.enable = true;
+
     kitty.enable = true;
     tmux.enable = true;
-    zsh.enable = true;
-    waybar.enable = true;
+    bash.enable = true;
     nvim-config.enable = true;
   };
+
   hardware.pulseaudio.enable = false;
   nix.settings.experimental-features = [
     "nix-command"
@@ -39,7 +40,16 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland
+    ];
+  };
   programs.nix-ld.enable = true;
+
   users.users.mertens = {
     isNormalUser = true;
     description = "mertens";
@@ -51,29 +61,16 @@
       telegram-desktop
       zathura
       firefox
-      xfce.thunar
       obsidian
       zed-editor
-      cmatrix
       yt-dlp
-      pavucontrol
       vlc
-      cava
-      zoom-us
       bleachbit
-      hyprshot
-      burpsuite
       discord
       neovide
-    ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
+      hyprshot
+      pavucontrol
+      xfce.thunar
     ];
   };
 

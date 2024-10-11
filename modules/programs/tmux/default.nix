@@ -13,7 +13,6 @@
         extraConfig = ''
           set-option -g default-terminal tmux-256color
           set-option -sa terminal-overrides ',tmux-256color:RGB'
-          set-option -g default-shell "/usr/bin/bash"
 
           # Set prefix
           unbind C-b
@@ -48,7 +47,6 @@
           # clock mode
           setw -g clock-mode-colour "#FFFFFF"
 
-
           # pane borders
           set -g pane-border-style 'fg=colour1'
           set -g pane-active-border-style 'fg=colour3'
@@ -69,7 +67,6 @@
           setw -g window-status-format '#W #[fg=colour7]#F '
 
           setw -g window-status-bell-style 'fg=colour2 bg=colour1 bold'
-
 
           run '~/.tmux/plugins/tpm/tpm'
 

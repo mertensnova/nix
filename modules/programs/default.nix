@@ -7,12 +7,14 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./nvim
+    #   ./themes
     ./waybar
     ./tmux
     ./kitty
     ./tofi
     ./hypr
     ./zsh
+    ./bash
   ];
   options.myopt = {
     home-manager.enable = lib.mkEnableOption "home-manager";
