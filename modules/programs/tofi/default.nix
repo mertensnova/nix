@@ -11,6 +11,7 @@
       programs.tofi = {
         enable = true;
         settings = {
+          font-size = lib.mkForce 12;
           outline-width = 0;
           border-width = 0;
           padding-left = "4%";

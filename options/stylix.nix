@@ -32,11 +32,12 @@ in {
   ];
 
   stylix = {
-    image = /home/mertens/Pictures/wallpapers/wo.png;
+    image = /home/mertens/Pictures/wallpapers/hacker.png;
     enable = true;
     autoEnable = true;
     base16Scheme = themes.lackluster;
     polarity = "dark";
+
     cursor = {
       package = pkgs.apple-cursor;
       name = "macOS-BigSur-White";
@@ -45,7 +46,7 @@ in {
 
     opacity = {
       applications = 1.0;
-      terminal = 1.0;
+      terminal = 0.9;
       desktop = 1.0;
       popups = 1.0;
     };

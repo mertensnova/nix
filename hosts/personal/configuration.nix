@@ -64,13 +64,17 @@
       obsidian
       zed-editor
       yt-dlp
+      brave
       vlc
       bleachbit
       discord
       neovide
       hyprshot
       pavucontrol
-      xfce.thunar
+      nautilus
+      feh
+      ffmpeg
+      alejandra
     ];
   };
 
@@ -80,12 +84,9 @@
     tree
     wl-clipboard
     xdg-utils
-    feh
     file
-    ffmpeg
     vim
     gvfs
-    xfce.thunar-volman
     wget
     git
     ncdu
@@ -94,7 +95,6 @@
     unzip
     wireguard-tools
     wayland
-    alejandra
     brightnessctl
     nitch
     fzf
