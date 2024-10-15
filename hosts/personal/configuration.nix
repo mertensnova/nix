@@ -73,6 +73,7 @@
       pavucontrol
       nautilus
       feh
+      qemu
       ffmpeg
       alejandra
     ];
@@ -83,6 +84,7 @@
   environment.systemPackages = with pkgs; [
     tree
     wl-clipboard
+    upower
     xdg-utils
     file
     vim
@@ -102,6 +104,7 @@
     pulseaudio
   ];
 
+services.upower.enable = true;
   networking.firewall.checkReversePath = "loose";
   networking.networkmanager.enable = true;
 

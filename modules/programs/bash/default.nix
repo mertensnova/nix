@@ -19,6 +19,11 @@
                 *) return;;
           esac
 
+          
+case $- in *i*)
+    [ -z "$TMUX" ] && exec tmux
+esac
+
           export MOZ_ENABLE_WAYLAND=1
           HISTCONTROL=ignoreboth
           shopt -s histappend
