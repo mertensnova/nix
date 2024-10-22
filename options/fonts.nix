@@ -7,7 +7,7 @@
     fonts.packages = with pkgs; [
       material-design-icons
 
-      inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+      #inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
       (nerdfonts.override {
         fonts = [
           "IBMPlexMono"
@@ -16,7 +16,7 @@
           "JetBrainsMono"
         ];
       })
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       dejavu_fonts
       maple-mono-NF
       noto-fonts

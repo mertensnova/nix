@@ -12,7 +12,6 @@
         enable = true;
         enableCompletion = true;
         bashrcExtra = ''
-          source ~/.git-prompt.sh
 
           case $- in
               *i*) ;;
@@ -33,7 +32,6 @@ esac
 
           shopt -s checkwinsize
 
-          export PS1="\[$(tput setaf 216)\]\u\[$(tput setaf 220)\]@\[$(tput setaf 222)\]\h \[$(tput setaf 229)\]\W\[$(tput sgr0)\] \$ "
 
 
           #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

@@ -5,6 +5,8 @@
 }: {
   imports = [
     ../../options/stylix.nix
+
+    ../../options/fonts.nix
     ../../options/printing.nix
     ../../options/locale.nix
     ../../options/grub.nix
@@ -64,11 +66,9 @@
       obsidian
       zed-editor
       yt-dlp
-      brave
       vlc
       bleachbit
       discord
-      neovide
       hyprshot
       pavucontrol
       nautilus

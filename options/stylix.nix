@@ -46,7 +46,7 @@ in {
 
     opacity = {
       applications = 1.0;
-      terminal = 0.9;
+      terminal = 1.0;
       desktop = 1.0;
       popups = 1.0;
     };
@@ -56,14 +56,14 @@ in {
         package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrains Mono Nerd Font";
       };
-      sansSerif = {
-        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-        name = "SFProDisplay Nerd Font";
-      };
-      serif = {
-        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-        name = "SFProDisplay Nerd Font";
-      };
+     # sansSerif = {
+      #  package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+       # name = "SFProDisplay Nerd Font";
+      #};
+      #serif = {
+       # package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+       # name = "SFProDisplay Nerd Font";
+     # };
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";

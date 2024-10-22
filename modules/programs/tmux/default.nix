@@ -43,31 +43,6 @@
           set -g visual-silence off
           setw -g monitor-activity off
           set -g bell-action none
-
-          # clock mode
-          setw -g clock-mode-colour "#FFFFFF"
-
-          # pane borders
-          set -g pane-border-style 'fg=colour1'
-          set -g pane-active-border-style 'fg=colour3'
-
-          # statusbar
-          set -g status-position bottom
-          set -g status-justify left
-          set -g status-style 'fg=#FFFFFF'
-          set -g status-left
-          set -g status-right '%Y-%m-%d %H:%M '
-          set -g status-right-length 50
-          set -g status-left-length 10
-
-          setw -g window-status-current-style 'fg=#FFFFFF bg=#000000 bold'
-          setw -g window-status-current-format ' #I #W #F '
-
-          setw -g window-status-style 'fg=#000000 dim'
-          setw -g window-status-format '#W #[fg=colour7]#F '
-
-          setw -g window-status-bell-style 'fg=colour2 bg=colour1 bold'
-
           run '~/.tmux/plugins/tpm/tpm'
 
         '';
