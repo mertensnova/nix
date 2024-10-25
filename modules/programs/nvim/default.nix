@@ -72,17 +72,17 @@
         ];
 
         extraLuaConfig = ''
-          ${builtins.readFile ./plugins/icons.lua}
-          ${builtins.readFile ./plugins/cmp.lua}
-          ${builtins.readFile ./plugins/lsp.lua}
-          ${builtins.readFile ./plugins/lualine.lua}
+            ${builtins.readFile ./plugins/icons.lua}
+            ${builtins.readFile ./plugins/cmp.lua}
+            ${builtins.readFile ./plugins/lsp.lua}
+            ${builtins.readFile ./plugins/lualine.lua}
           ${builtins.readFile ./plugins/color.lua}
-          ${builtins.readFile ./plugins/refactoring.lua}
-          ${builtins.readFile ./plugins/fugitive.lua}
-          ${builtins.readFile ./plugins/harpoon.lua}
-          ${builtins.readFile ./plugins/set.lua}
-                ${builtins.readFile ./plugins/remap.lua}
-                ${builtins.readFile ./plugins/formatting.lua}
+            ${builtins.readFile ./plugins/refactoring.lua}
+            ${builtins.readFile ./plugins/fugitive.lua}
+            ${builtins.readFile ./plugins/harpoon.lua}
+            ${builtins.readFile ./plugins/set.lua}
+                  ${builtins.readFile ./plugins/remap.lua}
+                  ${builtins.readFile ./plugins/formatting.lua}
 
         '';
       };

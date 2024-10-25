@@ -32,16 +32,16 @@ in {
   ];
 
   stylix = {
-    image = /home/mertens/Pictures/wallpapers/hacker.png;
+    image = wallpapers/med.png;
     enable = true;
     autoEnable = true;
     base16Scheme = themes.lackluster;
     polarity = "dark";
 
     cursor = {
-      package = pkgs.apple-cursor;
-      name = "macOS-BigSur-White";
-      size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 22;
     };
 
     opacity = {
@@ -56,14 +56,14 @@ in {
         package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrains Mono Nerd Font";
       };
-     # sansSerif = {
-      #  package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-       # name = "SFProDisplay Nerd Font";
-      #};
-      #serif = {
-       # package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-       # name = "SFProDisplay Nerd Font";
-     # };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";

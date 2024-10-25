@@ -20,7 +20,7 @@
         background = [
           {
             monitor = "";
-            path = "/home/mertens/Pictures/wallpapers/hacker.png";
+            path = "/home/mertens/Pictures/wallpapers/med.png";
             blur_passes = 2;
             blur_size = 7;
             color = "rgba(20, 20, 20, 0.9)";

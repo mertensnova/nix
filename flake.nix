@@ -15,7 +15,7 @@
     #stylix.url = "github:danth/stylix";
     waybar.url = "github:Alexays/Waybar";
     base16.url = "github:SenchoPens/base16.nix";
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    #  apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";

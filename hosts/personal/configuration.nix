@@ -71,11 +71,14 @@
       discord
       hyprshot
       pavucontrol
-      nautilus
       feh
       qemu
       ffmpeg
       alejandra
+      brave
+      nautilus
+      apostrophe
+      gnome-solanum
     ];
   };
 
@@ -104,7 +107,7 @@
     pulseaudio
   ];
 
-services.upower.enable = true;
+  services.upower.enable = true;
   networking.firewall.checkReversePath = "loose";
   networking.networkmanager.enable = true;
 
