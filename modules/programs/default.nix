@@ -7,7 +7,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./nvim
-    #   ./themes
+    ./themes
     ./waybar
     ./tmux
     ./kitty

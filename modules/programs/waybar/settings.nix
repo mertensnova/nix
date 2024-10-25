@@ -9,11 +9,12 @@
         {
           position = "top";
           layer = "top";
-          height = 35;
-          margin-top = 5;
-          margin-bottom = 0;
-          margin-left = 5;
+          height = 33;
+          margin-top = 3;
+
           margin-right = 5;
+          margin-left = 5;
+          margin-bottom = 0;
 
           modules-left = [
             "custom/icon"

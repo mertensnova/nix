@@ -25,6 +25,7 @@
     hyprpaper.enable = true;
     waybar.enable = true;
     tofi.enable = true;
+    gtk.enable = true;
 
     kitty.enable = true;
     tmux.enable = true;
@@ -77,8 +78,6 @@
       alejandra
       brave
       nautilus
-      apostrophe
-      gnome-solanum
     ];
   };
 
