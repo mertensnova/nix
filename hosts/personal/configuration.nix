@@ -73,10 +73,11 @@
       hyprshot
       pavucontrol
       feh
+      brave
       qemu
       ffmpeg
       alejandra
-      brave
+      zoom-us
       nautilus
     ];
   };

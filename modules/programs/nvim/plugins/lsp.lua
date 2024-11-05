@@ -1,5 +1,6 @@
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
@@ -23,6 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.gopls.setup{
   capabilities = capabilities,

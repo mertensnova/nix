@@ -18,10 +18,12 @@
 
         extraPackages = with pkgs; [
           go
+          vscode-langservers-extracted
           lua-language-server
           clang
           clang-tools
           gopls
+          fd
           python3
           unzip
           ripgrep
@@ -37,6 +39,7 @@
                 p.tree-sitter-bash
                 p.tree-sitter-lua
                 p.tree-sitter-go
+                p.tree-sitter-goctl
                 p.tree-sitter-cpp
                 p.tree-sitter-c
                 p.tree-sitter-make
@@ -76,13 +79,13 @@
             ${builtins.readFile ./plugins/cmp.lua}
             ${builtins.readFile ./plugins/lsp.lua}
             ${builtins.readFile ./plugins/lualine.lua}
-          ${builtins.readFile ./plugins/color.lua}
+            ${builtins.readFile ./plugins/color.lua}
             ${builtins.readFile ./plugins/refactoring.lua}
             ${builtins.readFile ./plugins/fugitive.lua}
             ${builtins.readFile ./plugins/harpoon.lua}
             ${builtins.readFile ./plugins/set.lua}
-                  ${builtins.readFile ./plugins/remap.lua}
-                  ${builtins.readFile ./plugins/formatting.lua}
+            ${builtins.readFile ./plugins/remap.lua}
+            ${builtins.readFile ./plugins/formatting.lua}
 
         '';
       };
